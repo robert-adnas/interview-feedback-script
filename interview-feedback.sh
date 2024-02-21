@@ -107,7 +107,7 @@ echo "- Highest Score: **$highestScore** on **$highestTopic**" >> "$feedback_fil
 echo "- Lowest Score: **$lowestScore** on **$lowestTopic**" >> "$feedback_file"
 echo "" >> "$feedback_file"
 
-# Add Generative AI prompt at the end
+# Add Generative AI prompt
 echo "Given the following scores and descriptions for a technical interview:" >> "$feedback_file"
 for topic in "${topics[@]}"; do
     if [[ -n ${scores[$topic]} ]]; then
