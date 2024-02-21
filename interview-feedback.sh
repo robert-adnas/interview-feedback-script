@@ -19,7 +19,7 @@ lowestScore=10
 highestTopic=""
 lowestTopic=""
 
-echo "Interview Feedback Entry"
+echo "Interview Feedback Entry📝"
 
 # Ask for candidate's name
 read -p "Enter candidate's name: " name
@@ -68,7 +68,7 @@ done
 
 # Save to a Markdown file
 feedback_file="feedback_${name}_${role}.md"
-echo "# Feedback for $name ($role Role)" > "$feedback_file"
+echo "# Feedback for $name ($role Role) 🌟" > "$feedback_file"
 echo "" >> "$feedback_file" # Add a blank line
 
 # Add topics, scores, and descriptions in Markdown format
@@ -94,7 +94,7 @@ else
     lowestTopic="N/A"
 fi
 
-echo "## Summary Statistics" >> "$feedback_file"
+echo "## Summary Statistics 📊" >> "$feedback_file"
 echo "- Average Score: **$averageScore**" >> "$feedback_file"
 echo "- Highest Score: **$highestScore** on **$highestTopic**" >> "$feedback_file"
 echo "- Lowest Score: **$lowestScore** on **$lowestTopic**" >> "$feedback_file"
