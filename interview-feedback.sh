@@ -71,11 +71,18 @@ feedback_file="feedback_${name}_${role}.md"
 echo "# Feedback for $name ($role Role) 🌟" > "$feedback_file"
 echo "" >> "$feedback_file" # Add a blank line
 
-# Add topics, scores, and descriptions in Markdown format
+# Add topics, scores, and descriptions
 for topic in "${topics[@]}"; do
     if [[ -n ${scores[$topic]} ]]; then
+        # Add emoji based on score
+        score_emoji="😐"
+        if (( ${scores[$topic]} > 7 )); then
+            score_emoji="😄"
+        elif (( ${scores[$topic]} < 4 )); then
+            score_emoji="😟"
+        fi
         echo "## $topic" >> "$feedback_file"
-        echo "Score: **${scores[$topic]}**" >> "$feedback_file"
+        echo "Score: **${scores[$topic]}** $score_emoji" >> "$feedback_file"
         if [[ -n ${descriptions[$topic]} ]]; then
             echo "Description: ${descriptions[$topic]}" >> "$feedback_file"
         fi
