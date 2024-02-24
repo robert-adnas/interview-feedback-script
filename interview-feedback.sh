@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # General topics applicable to both roles
 general_topics=("Communication" "Experience" "Problem Solving" "Git" "HTTP" "OOP" "Architecture")
@@ -32,10 +32,10 @@ read -p "Enter choice (1 or 2): " role_choice
 
 # Determine topics based on role choice
 topics=("${general_topics[@]}") # Start with general topics
-if [ "$role_choice" == "1" ]; then
+if [[ "$role_choice" == "1" ]]; then
     topics+=("${front_end_topics[@]}")
     role="Front-end"
-elif [ "$role_choice" == "2" ]; then
+elif [[ "$role_choice" == "2" ]]; then
     topics+=("${back_end_topics[@]}")
     role="Back-end"
 else
@@ -53,8 +53,8 @@ for topic in "${topics[@]}"; do
         descriptions[$topic]="$description"
 
         # Update statistics
-        ((totalScore+=score))
-        ((countScores++))
+        totalScore=$(( totalScore + score )) 
+        countScores=$(( countScores + 1 )) 
         if [[ $score -gt $highestScore ]]; then
             highestScore=$score
             highestTopic=$topic
@@ -69,16 +69,16 @@ done
 # Save to a Markdown file
 feedback_file="feedback_${name}_${role}.md"
 echo "# Feedback for $name ($role Role) 🌟" > "$feedback_file"
-echo "" >> "$feedback_file" # Add a blank line
+echo "" >> "$feedback_file" 
 
 # Add topics, scores, and descriptions
 for topic in "${topics[@]}"; do
     if [[ -n ${scores[$topic]} ]]; then
         # Add emoji based on score
         score_emoji="😐"
-        if (( ${scores[$topic]} > 7 )); then
+        if (( $(echo "${scores[$topic]} > 7" | bc -l) )); then 
             score_emoji="😄"
-        elif (( ${scores[$topic]} < 4 )); then
+        elif (( $(echo "${scores[$topic]} < 4" | bc -l) )); then
             score_emoji="😟"
         fi
         echo "## $topic" >> "$feedback_file"
