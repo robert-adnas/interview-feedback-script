@@ -13,10 +13,8 @@ A Bash script to streamline technical interview feedback. It guides interviewers
 
 **Usage**
 
-1. Install Bash
-2. Download `interview-feedback.sh`
-3. `chmod +x interview-feedback.sh`
-4. `./interview-feedback.sh` and follow the prompts
+1. `chmod +x interview-feedback.sh`
+2. `./interview-feedback.sh` and follow the prompts
 
 **Customization**
 
